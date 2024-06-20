@@ -1,1 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+        hr {
+            position: absolute;
+            border: none;
+            width: 1px;
+            height: 100vh;
+            background-color: #00f;
+            animation: rain 0.2s linear infinite;
+        }
+        .thunder {
+            background-color: #ff0;
+        }
+        @keyframes rain {
+            to {
+                transform: translateY(100vh);
+            }
+        }
+    </style>
+</head>
+<body>
+    <script>
+        let hrElement;
+        let counter = 100;
+        for (let i = 0; i < counter; i++) {
+            hrElement = document.createElement("HR");
+            if (i == counter - 1) {
+                hrElement.className = "thunder";
+            } else {
+                hrElement.style.left = Math.floor(Math.random() * window.innerWidth) + "px";
+                hrElement.style.animationDuration = 0.2 + Math.random() * 0.3 + "s";
+                hrElement.style.animationDelay = Math.random() * 5 + "s";
+            }
+            document.body.appendChild(hrElement);
+        }
+
+        console.log(
+            "There are " +
+            document.querySelectorAll("hr").length +
+            " <hr> tags in this project :)"
+        );
+    </script>
+</body>
+</html>
 
